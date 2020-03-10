@@ -1,0 +1,33 @@
+.pipelines-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.stream-tabs {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.stream-tabs > .stream-tabs__tab {
+  text-decoration: none;
+}
+
+.stream-tabs__tab {
+  padding: 18px 10px;
+  font-size: 14px;
+  color: #62738d;
+}
+
+.stream-tabs__tab.active {
+  text-decoration: none;
+  color: #79589f;
+  border-bottom: 1px solid #79589f;
+}
+
+.stream-search-add {
+  display: flex;
+  flex: 1 1 auto;
+}

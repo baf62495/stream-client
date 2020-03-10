@@ -1,0 +1,6 @@
+.BaseTable {
+  width: 100%;
+  border-radius: 6px;
+  font-size: 13px;
+  overflow: scroll;
+}

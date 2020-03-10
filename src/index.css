@@ -5,9 +5,103 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #323b49;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.landing-page {
+  text-align: center;
+}
+
+.stream-page {
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.BaseTable__row,
+.BaseTable__header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.BaseTable__row-cell,
+.BaseTable__header-cell {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 0 7.5px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cell-sz-xs {
+  width: 40px;
+}
+
+.cell-sz-sm {
+  width: 100px;
+}
+
+.cell-sz-med {
+  width: 160px;
+}
+
+.cell-sz-lg {
+  width: 220px;
+}
+
+.nudge-down--1 {
+  position: relative;
+  top: 1px;
+}
+
+.stream-btn,
+.stream-btn--primary {
+  font-size: 14px;
+  height: 32px;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    -webkit-filter 0.2s ease;
+  transition: filter 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+  transition: filter 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, -webkit-filter 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  margin: 0 10px;
+}
+
+.stream-btn--primary {
+  background-clip: border-box;
+  background-origin: border-box;
+  background: linear-gradient(135deg, #ac8ece, #79589f);
+  color: #fff;
+}
+
+.stream-btn--primary:hover {
+  filter: brightness(105%);
+}
+
+.mw38 {
+  max-width: 38rem;
 }

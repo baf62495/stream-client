@@ -1,0 +1,32 @@
+.BaseTable__header {
+  font-weight: 700;
+  text-transform: capitalize;
+  background: #fff;
+  height: 40px;
+}
+
+.BaseTable__header-cell {
+  cursor: pointer;
+}
+
+.BaseTable__header-cell:hover {
+  border-right: 3px solid #ccc;
+}
+
+.BaseTable__header-cell .BaseTable__sort-indicator {
+  display: none;
+}
+
+.BaseTable__header-cell--sorting .BaseTable__sort-indicator,
+.BaseTable__header-cell--sorting:hover .BaseTable__sort-indicator {
+  display: block;
+}
+
+.BaseTable__sort-indicator {
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  text-align: center;
+}

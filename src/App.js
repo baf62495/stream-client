@@ -1,4 +1,5 @@
 import React from 'react';
+import config from './config';
 import { Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage/LandingPage';
 import PipelineDashboard from './pages/PipelineDashboard/PipelineDashboard';
@@ -8,12 +9,43 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      leads: props.leads,
-      pipelines: props.pipelines,
+      leads: [],
+      pipelines: [],
       users: props.users,
       searchInput: '',
       isAddingNewLead: false
     };
+  }
+
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_BASE_URL}/pipelines`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${config.API_KEY}`
+        }
+      }),
+      fetch(`${config.API_BASE_URL}/leads`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${config.API_KEY}`
+        }
+      })
+    ])
+      .then(([pipelinesRes, leadsRes]) => {
+        if (!pipelinesRes.ok)
+          return pipelinesRes.json().then(e => Promise.reject(e));
+        if (!leadsRes.ok) return leadsRes.json().then(e => Promise.reject(e));
+        return Promise.all([pipelinesRes.json(), leadsRes.json()]);
+      })
+      .then(([pipelines, leads]) => {
+        this.setState({ pipelines, leads });
+      })
+      .catch(error => {
+        console.error({ error });
+      });
   }
 
   updateSearchInput = input => {

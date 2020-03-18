@@ -9,10 +9,12 @@
 .stream-tabs {
   display: flex;
   flex: 1 1 auto;
+  overflow: scroll;
 }
 
 .stream-tabs > .stream-tabs__tab {
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .stream-tabs__tab {

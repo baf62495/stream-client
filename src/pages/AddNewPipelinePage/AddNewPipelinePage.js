@@ -8,13 +8,14 @@ export default function AddNewPipelinePage(props) {
 
     const newPipeline = {
       title: e.target.title.value,
-      id: 6
+      team_id: 1
     };
 
     props.submitNewPipeline(newPipeline);
 
     props.history.push(`/pipelines/${newPipeline.id}`);
   };
+
   return (
     <React.Fragment>
       <Header />

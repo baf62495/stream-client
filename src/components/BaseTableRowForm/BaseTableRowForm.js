@@ -3,12 +3,24 @@ import { states } from '../../helpers';
 import SubmitButton from '../../elements/SubmitButton/SubmitButton';
 
 export default function BaseTableRowForm(props) {
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const newLead = {
+      name: e.target.name.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value,
+      status: e.target.status.value,
+      city: e.target.city.value,
+      state: e.target.state.value,
+      pipeline_id: props.pipeline_id
+    };
+
+    props.submitNewLead(newLead);
+  };
+
   return (
-    <form
-      role='row'
-      className='BaseTable__row'
-      onSubmit={e => props.submitNewLead(e, props.pipeline_id)}
-    >
+    <form role='row' className='BaseTable__row' onSubmit={e => handleSubmit(e)}>
       {/* <div role='gridcell' className='BaseTable__row-cell cell-sz-xs'></div> */}
       <input
         type='text'

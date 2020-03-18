@@ -23,7 +23,7 @@ export default class BaseTableRowEditForm extends React.Component {
     const { id, name, phone, email, status, city, state } = this.state;
     const updatedLead = { id, name, phone, email, status, city, state };
 
-    this.props.updateLead(updatedLead);
+    this.props.updateLead(updatedLead, id);
     this.props.toggleEditLeadForm();
   };
 

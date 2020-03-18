@@ -65,45 +65,96 @@ class App extends React.Component {
     });
   };
 
-  submitNewLead = (e, pipeline_id) => {
-    e.preventDefault();
-
-    const newLead = {
-      name: e.target.name.value,
-      phone: e.target.phone.value,
-      email: e.target.email.value,
-      status: e.target.status.value,
-      city: e.target.city.value,
-      state: e.target.state.value,
-      pipeline_id: pipeline_id
-    };
-
-    this.setState({
-      leads: [newLead, ...this.state.leads],
-      isAddingNewLead: false
-    });
+  submitNewLead = newLead => {
+    fetch(`${config.API_BASE_URL}/leads`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${config.API_KEY}`
+      },
+      body: JSON.stringify(newLead)
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e));
+        }
+        return res.json();
+      })
+      .then(lead => {
+        this.setState({
+          leads: [lead, ...this.state.leads],
+          isAddingNewLead: false
+        });
+      });
   };
 
   submitNewPipeline = newPipeline => {
-    this.setState({
-      pipelines: [...this.state.pipelines, newPipeline]
-    });
+    fetch(`${config.API_BASE_URL}/pipelines`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${config.API_KEY}`
+      },
+      body: JSON.stringify(newPipeline)
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e));
+        }
+        return res.json();
+      })
+      .then(pipeline => {
+        this.setState({
+          pipelines: [...this.state.pipelines, pipeline]
+        });
+      });
   };
 
   deleteLead = (e, id) => {
     e.preventDefault();
 
-    this.setState({
-      leads: this.state.leads.filter(lead => lead.id !== id)
-    });
+    fetch(`${config.API_BASE_URL}/leads/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${config.API_KEY}`
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e));
+        }
+        return res;
+      })
+      .then(() => {
+        this.setState({
+          leads: this.state.leads.filter(lead => lead.id !== id)
+        });
+      });
   };
 
-  updateLead = updatedLead => {
-    this.setState({
-      leads: this.state.leads.map(lead =>
-        lead.id !== updatedLead.id ? lead : updatedLead
-      )
-    });
+  updateLead = (updatedLead, id) => {
+    fetch(`${config.API_BASE_URL}/leads/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${config.API_KEY}`
+      },
+      body: JSON.stringify(updatedLead)
+    })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e));
+        }
+        return res;
+      })
+      .then(() => {
+        this.setState({
+          leads: this.state.leads.map(lead =>
+            lead.id !== updatedLead.id ? lead : updatedLead
+          )
+        });
+      });
   };
 
   render() {

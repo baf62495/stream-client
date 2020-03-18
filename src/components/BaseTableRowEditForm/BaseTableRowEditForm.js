@@ -11,7 +11,6 @@ export default class BaseTableRowEditForm extends React.Component {
       name: props.lead.name,
       phone: props.lead.phone,
       email: props.lead.email,
-      status: props.lead.status,
       city: props.lead.city,
       state: props.lead.state
     };
@@ -20,8 +19,8 @@ export default class BaseTableRowEditForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { id, name, phone, email, status, city, state } = this.state;
-    const updatedLead = { id, name, phone, email, status, city, state };
+    const { id, name, phone, email, city, state } = this.state;
+    const updatedLead = { id, name, phone, email, city, state };
 
     this.props.updateLead(updatedLead, id);
     this.props.toggleEditLeadForm();
@@ -39,10 +38,6 @@ export default class BaseTableRowEditForm extends React.Component {
     this.setState({ email: e.target.value });
   };
 
-  handleChangeStatus = e => {
-    this.setState({ status: e.target.value });
-  };
-
   handleChangeCity = e => {
     this.setState({ city: e.target.value });
   };
@@ -52,7 +47,7 @@ export default class BaseTableRowEditForm extends React.Component {
   };
 
   render() {
-    const { name, phone, email, status, city, state } = this.state;
+    const { name, phone, email, city, state } = this.state;
     return (
       <form
         role='row'
@@ -91,20 +86,6 @@ export default class BaseTableRowEditForm extends React.Component {
           onChange={this.handleChangeEmail}
           required
         ></input>
-        <select
-          name='status'
-          id='status'
-          role='gridcell'
-          className='BaseTable__row-cell cell-sz-sm'
-          value={status}
-          onChange={this.handleChangeStatus}
-          required
-        >
-          <option value='New'>New</option>
-          <option value='test'>test</option>
-          <option value='test'>test</option>
-          <option value='test'>test</option>
-        </select>
         <select
           name='city'
           id='city'

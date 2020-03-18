@@ -10,7 +10,6 @@ export default function BaseTableRowForm(props) {
       name: e.target.name.value,
       phone: e.target.phone.value,
       email: e.target.email.value,
-      status: e.target.status.value,
       city: e.target.city.value,
       state: e.target.state.value,
       pipeline_id: props.pipeline_id
@@ -47,18 +46,6 @@ export default function BaseTableRowForm(props) {
         className='BaseTable__row-cell cell-sz-lg'
         required
       ></input>
-      <select
-        name='status'
-        id='status'
-        role='gridcell'
-        className='BaseTable__row-cell cell-sz-sm'
-        required
-      >
-        <option value='New'>New</option>
-        <option value='test'>test</option>
-        <option value='test'>test</option>
-        <option value='test'>test</option>
-      </select>
       <select
         name='city'
         id='city'

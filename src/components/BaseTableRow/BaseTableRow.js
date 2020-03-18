@@ -23,7 +23,6 @@ export default class BaseTableRow extends React.Component {
       name: this.props.name,
       phone: this.props.phone,
       email: this.props.email,
-      status: this.props.status,
       city: this.props.city,
       state: this.props.state
     };
@@ -42,9 +41,6 @@ export default class BaseTableRow extends React.Component {
           </div>
           <div role='gridcell' className='BaseTable__row-cell cell-sz-lg'>
             {lead.email}
-          </div>
-          <div role='gridcell' className='BaseTable__row-cell cell-sz-sm'>
-            {lead.status}
           </div>
           <div role='gridcell' className='BaseTable__row-cell cell-sz-med'>
             {lead.city}

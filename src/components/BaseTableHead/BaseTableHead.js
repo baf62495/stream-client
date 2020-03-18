@@ -30,12 +30,6 @@ export default function BaseTableHead() {
       </div>
       <div
         role='gridcell'
-        className='BaseTable__header-cell BaseTable__header-cell--sortable cell-sz-sm'
-      >
-        Status
-      </div>
-      <div
-        role='gridcell'
         className='BaseTable__header-cell BaseTable__header-cell--sortable cell-sz-med'
       >
         City

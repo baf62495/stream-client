@@ -18,7 +18,6 @@ export default function BaseTable(props) {
       lead =>
         lead.name.toLowerCase().includes(searchInput.toLowerCase()) ||
         lead.email.toLowerCase().includes(searchInput.toLowerCase()) ||
-        lead.status.toLowerCase().includes(searchInput.toLowerCase()) ||
         lead.city.toLowerCase().includes(searchInput.toLowerCase()) ||
         lead.state.toLowerCase().includes(searchInput.toLowerCase()) ||
         lead.phone.includes(searchInput)

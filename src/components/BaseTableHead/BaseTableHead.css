@@ -13,10 +13,6 @@
   border-right: 3px solid #ccc;
 }
 
-.BaseTable__header-cell .BaseTable__sort-indicator {
-  display: none;
-}
-
 .BaseTable__header-cell--sorting .BaseTable__sort-indicator,
 .BaseTable__header-cell--sorting:hover .BaseTable__sort-indicator {
   display: block;
@@ -29,4 +25,13 @@
   font-weight: normal;
   line-height: 16px;
   text-align: center;
+  margin-left: 2px;
+}
+
+.BaseTable__sort-indicator--descending:after {
+  content: '↓';
+}
+
+.BaseTable__sort-indicator--ascending:after {
+  content: '↑';
 }

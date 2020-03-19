@@ -30,6 +30,8 @@ export default function PipelineDashboard(props) {
           deleteLead={props.deleteLead}
           pipeline_id={pipeline_id}
           updateLead={props.updateLead}
+          onSort={props.onSort}
+          setArrowClass={props.setArrowClass}
         />
       </main>
     </React.Fragment>

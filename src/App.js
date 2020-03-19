@@ -13,7 +13,11 @@ class App extends React.Component {
       pipelines: [],
       users: props.users,
       searchInput: '',
-      isAddingNewLead: false
+      isAddingNewLead: false,
+      sort: {
+        column: null,
+        direction: 'desc'
+      }
     };
   }
 
@@ -48,23 +52,6 @@ class App extends React.Component {
       });
   }
 
-  updateSearchInput = input => {
-    this.setState({
-      searchInput: input
-    });
-  };
-
-  filterLeadsForPipeline = (leads, pipeline_id) =>
-    !pipeline_id
-      ? leads
-      : leads.filter(lead => lead.pipeline_id === pipeline_id);
-
-  toggleAddLeadForm = () => {
-    this.setState({
-      isAddingNewLead: !this.state.isAddingNewLead
-    });
-  };
-
   submitNewLead = newLead => {
     fetch(`${config.API_BASE_URL}/leads`, {
       method: 'POST',
@@ -82,7 +69,7 @@ class App extends React.Component {
       })
       .then(lead => {
         this.setState({
-          leads: [lead, ...this.state.leads],
+          leads: [...this.state.leads, lead],
           isAddingNewLead: false
         });
       });
@@ -157,6 +144,60 @@ class App extends React.Component {
       });
   };
 
+  updateSearchInput = input => {
+    this.setState({
+      searchInput: input
+    });
+  };
+
+  filterLeadsForPipeline = (leads, pipeline_id) =>
+    !pipeline_id
+      ? leads
+      : leads.filter(lead => lead.pipeline_id === pipeline_id);
+
+  toggleAddLeadForm = () => {
+    this.setState({
+      isAddingNewLead: !this.state.isAddingNewLead
+    });
+  };
+
+  onSort = (e, column) => {
+    const direction = this.state.sort.column
+      ? this.state.sort.direction === 'asc'
+        ? 'desc'
+        : 'asc'
+      : 'desc';
+
+    const sortedLeads = this.state.leads.sort((a, b) =>
+      a[column].localeCompare(b[column])
+    );
+
+    if (direction === 'desc') {
+      sortedLeads.reverse();
+    }
+
+    this.setState({
+      leads: sortedLeads,
+      sort: {
+        column,
+        direction
+      }
+    });
+  };
+
+  setArrowClass = column => {
+    let className = 'BaseTable__sort-indicator';
+
+    if (this.state.sort.column === column) {
+      className +=
+        this.state.sort.direction === 'asc'
+          ? ' BaseTable__sort-indicator--ascending'
+          : ' BaseTable__sort-indicator--descending';
+    }
+
+    return className;
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -178,6 +219,8 @@ class App extends React.Component {
               filterLeadsForPipeline={this.filterLeadsForPipeline}
               deleteLead={this.deleteLead}
               updateLead={this.updateLead}
+              onSort={this.onSort}
+              setArrowClass={this.setArrowClass}
             />
           )}
         />
@@ -208,6 +251,8 @@ class App extends React.Component {
               filterLeadsForPipeline={this.filterLeadsForPipeline}
               deleteLead={this.deleteLead}
               updateLead={this.updateLead}
+              onSort={this.onSort}
+              setArrowClass={this.setArrowClass}
             />
           )}
         />

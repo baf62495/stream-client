@@ -122,6 +122,7 @@ export default class BaseTableRowEditForm extends React.Component {
           ))}
         </select>
         <SubmitButton />
+        <button onClick={e => this.props.toggleEditLeadForm()}>Cancel</button>
       </form>
     );
   }

@@ -11,8 +11,11 @@ export default function BaseTable(props) {
     submitNewLead,
     deleteLead,
     pipeline_id,
-    updateLead
+    updateLead,
+    onSort,
+    setArrowClass
   } = props;
+
   const leadsList = props.leads
     .filter(
       lead =>
@@ -33,7 +36,7 @@ export default function BaseTable(props) {
 
   return (
     <div role='table' className='BaseTable'>
-      <BaseTableHead />
+      <BaseTableHead onSort={onSort} setArrowClass={setArrowClass} />
       {isAddingNewLead ? (
         <BaseTableRowForm
           submitNewLead={submitNewLead}

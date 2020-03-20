@@ -54,6 +54,11 @@ export default class BaseTableRow extends React.Component {
     });
   };
 
+  handleDelete = e => {
+    this.props.deleteLead(e, this.props.id);
+    this.toggleDropDownMenu();
+  };
+
   render() {
     const { isBeingEdited, isDropDownActive, isBeingMoved } = this.state;
     const pipelines = this.props.pipelines;
@@ -71,7 +76,7 @@ export default class BaseTableRow extends React.Component {
         <div onClick={e => this.toggleEditLeadForm(e)}>Edit</div>
       );
       const deleteButton = (
-        <div onClick={e => this.props.deleteLead(e, this.props.id)}>Delete</div>
+        <div onClick={e => this.handleDelete(e)}>Delete</div>
       );
       const moveButton = (
         <React.Fragment>

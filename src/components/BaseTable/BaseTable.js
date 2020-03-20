@@ -13,10 +13,21 @@ export default function BaseTable(props) {
     pipeline_id,
     updateLead,
     onSort,
-    setArrowClass
+    setArrowClass,
+    sortedColumn
   } = props;
 
   const leadsList = props.leads
+    .sort((a, b) => {
+      if (sortedColumn === null) {
+        return a.date_created > b.date_created
+          ? -1
+          : a.date_created < b.date_created
+          ? 1
+          : 0;
+      }
+      return null;
+    })
     .filter(
       lead =>
         lead.name.toLowerCase().includes(searchInput.toLowerCase()) ||

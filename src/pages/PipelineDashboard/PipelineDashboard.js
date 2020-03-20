@@ -32,6 +32,7 @@ export default function PipelineDashboard(props) {
           updateLead={props.updateLead}
           onSort={props.onSort}
           setArrowClass={props.setArrowClass}
+          sortedColumn={props.sortedColumn}
         />
       </main>
     </React.Fragment>

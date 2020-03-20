@@ -69,7 +69,7 @@ class App extends React.Component {
       })
       .then(lead => {
         this.setState({
-          leads: [...this.state.leads, lead],
+          leads: [lead, ...this.state.leads],
           isAddingNewLead: false
         });
       });
@@ -213,6 +213,7 @@ class App extends React.Component {
               users={this.state.users}
               searchInput={this.state.searchInput}
               isAddingNewLead={this.state.isAddingNewLead}
+              sortedColumn={this.state.sort.column}
               updateSearchInput={this.updateSearchInput}
               toggleAddLeadForm={this.toggleAddLeadForm}
               submitNewLead={this.submitNewLead}
@@ -245,6 +246,7 @@ class App extends React.Component {
               users={this.state.users}
               searchInput={this.state.searchInput}
               isAddingNewLead={this.state.isAddingNewLead}
+              sortedColumn={this.state.sort.column}
               updateSearchInput={this.updateSearchInput}
               toggleAddLeadForm={this.toggleAddLeadForm}
               submitNewLead={this.submitNewLead}

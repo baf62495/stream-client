@@ -14,6 +14,7 @@ export default function PipelinesHeader(props) {
       {pipeline.title}
     </NavLink>
   ));
+
   return (
     <div className='pipelines-header'>
       <nav className='stream-tabs'>

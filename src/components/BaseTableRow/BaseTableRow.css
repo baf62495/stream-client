@@ -5,3 +5,9 @@
 .BaseTable__row:hover {
   background-color: #fbfbfd;
 }
+
+.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}

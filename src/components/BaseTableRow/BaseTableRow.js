@@ -1,23 +1,62 @@
 import React from 'react';
 import './BaseTableRow.css';
 import BaseTableRowEditForm from '../BaseTableRowEditForm/BaseTableRowEditForm';
+import DropDownMenu from '../../elements/DropDownMenu/DropDownMenu';
 
 export default class BaseTableRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isBeingEdited: false
+      isBeingEdited: false,
+      isDropDownActive: false,
+      isBeingMoved: false,
+      pipeline_id: props.pipeline_id
     };
   }
+
+  handleChangePipelineId = (e, newPipelineId) => {
+    const { id, name, phone, email, city, state } = this.props;
+    const updatedLead = {
+      id,
+      name,
+      phone,
+      email,
+      city,
+      state,
+      pipeline_id: newPipelineId
+    };
+
+    this.props.updateLead(updatedLead, this.props.id);
+    this.toggleDropDownMenu();
+  };
 
   toggleEditLeadForm = e => {
     this.setState({
       isBeingEdited: !this.state.isBeingEdited
     });
+    if (this.state.isBeingEdited) {
+      this.toggleDropDownMenu();
+    }
+  };
+
+  toggleDropDownMenu = e => {
+    this.setState({
+      isDropDownActive: !this.state.isDropDownActive
+    });
+    if (this.state.isBeingMoved) {
+      this.toggleMoveLead();
+    }
+  };
+
+  toggleMoveLead = e => {
+    this.setState({
+      isBeingMoved: !this.state.isBeingMoved
+    });
   };
 
   render() {
-    const { isBeingEdited } = this.state;
+    const { isBeingEdited, isDropDownActive, isBeingMoved } = this.state;
+    const pipelines = this.props.pipelines;
     const lead = {
       id: this.props.id,
       name: this.props.name,
@@ -28,11 +67,33 @@ export default class BaseTableRow extends React.Component {
     };
 
     if (!isBeingEdited) {
+      const editButton = (
+        <div onClick={e => this.toggleEditLeadForm(e)}>Edit</div>
+      );
+      const deleteButton = (
+        <div onClick={e => this.props.deleteLead(e, this.props.id)}>Delete</div>
+      );
+      const moveButton = (
+        <React.Fragment>
+          <div onClick={e => this.toggleMoveLead(e)}>Move</div>
+          {isBeingMoved ? (
+            <DropDownMenu
+              listItems={pipelines.map((pipeline, key) => {
+                return (
+                  <div
+                    onClick={e => this.handleChangePipelineId(e, pipeline.id)}
+                  >
+                    {pipeline.title}, {pipeline.id}
+                  </div>
+                );
+              })}
+            />
+          ) : null}
+        </React.Fragment>
+      );
+
       return (
         <div role='row' className='BaseTable__row'>
-          {/* <div role='gridcell' className='BaseTable__row-cell cell-sz-xs'>
-            <input type='checkbox'></input>
-          </div> */}
           <div role='gridcell' className='BaseTable__row-cell cell-sz-med'>
             {lead.name}
           </div>
@@ -43,15 +104,19 @@ export default class BaseTableRow extends React.Component {
             {lead.email}
           </div>
           <div role='gridcell' className='BaseTable__row-cell cell-sz-med'>
-            {lead.city}
-          </div>
-          <div role='gridcell' className='BaseTable__row-cell cell-sz-med'>
             {lead.state}
           </div>
-          <button onClick={e => this.toggleEditLeadForm(e)}>Edit</button>
-          <button onClick={e => this.props.deleteLead(e, this.props.id)}>
-            Delete
-          </button>
+          <div role='gridcell' className='BaseTable__row-cell cell-sz-med'>
+            {lead.city}
+          </div>
+          <div className='btn-group'>
+            <button onClick={e => this.toggleDropDownMenu(e)}>More</button>
+            {isDropDownActive ? (
+              <DropDownMenu
+                listItems={[editButton, deleteButton, moveButton]}
+              />
+            ) : null}
+          </div>
         </div>
       );
     } else {

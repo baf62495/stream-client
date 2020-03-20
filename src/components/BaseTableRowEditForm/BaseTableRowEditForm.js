@@ -1,5 +1,4 @@
 import React from 'react';
-import { states } from '../../helpers';
 import SubmitButton from '../../elements/SubmitButton/SubmitButton';
 
 export default class BaseTableRowEditForm extends React.Component {
@@ -46,6 +45,8 @@ export default class BaseTableRowEditForm extends React.Component {
     this.setState({ state: e.target.value });
   };
 
+  getCities = stateId => {};
+
   render() {
     const { name, phone, email, city, state } = this.state;
     return (
@@ -54,7 +55,6 @@ export default class BaseTableRowEditForm extends React.Component {
         className='BaseTable__row'
         onSubmit={e => this.handleSubmit(e)}
       >
-        {/* <div role='gridcell' className='BaseTable__row-cell cell-sz-xs'></div> */}
         <input
           type='text'
           name='name'
@@ -86,41 +86,26 @@ export default class BaseTableRowEditForm extends React.Component {
           onChange={this.handleChangeEmail}
           required
         ></input>
-        <select
-          name='city'
-          id='city'
-          value={city}
-          role='gridcell'
-          className='BaseTable__row-cell cell-sz-med'
-          onChange={this.handleChangeCity}
-          required
-        >
-          <option value='' disabled>
-            Select...
-          </option>
-          <option value='New'>Letterkenny</option>
-          <option value='test'>test</option>
-          <option value='test'>test</option>
-          <option value='test'>test</option>
-        </select>
-        <select
+        <input
+          type='text'
           name='state'
           id='state'
-          value={state}
           role='gridcell'
           className='BaseTable__row-cell cell-sz-med'
+          value={state}
           onChange={this.handleChangeState}
           required
-        >
-          <option value='' disabled>
-            Select...
-          </option>
-          {states.map((state, key) => (
-            <option value={state.name} key={key}>
-              {state.name}
-            </option>
-          ))}
-        </select>
+        ></input>
+        <input
+          type='text'
+          name='city'
+          id='city'
+          role='gridcell'
+          className='BaseTable__row-cell cell-sz-med'
+          value={city}
+          onChange={this.handleChangeCity}
+          required
+        ></input>
         <SubmitButton />
         <button onClick={e => this.props.toggleEditLeadForm()}>Cancel</button>
       </form>

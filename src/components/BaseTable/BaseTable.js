@@ -14,7 +14,8 @@ export default function BaseTable(props) {
     updateLead,
     onSort,
     setArrowClass,
-    sortedColumn
+    sortedColumn,
+    pipelines
   } = props;
 
   const leadsList = props.leads
@@ -40,6 +41,7 @@ export default function BaseTable(props) {
       <BaseTableRow
         {...lead}
         key={key}
+        pipelines={pipelines}
         deleteLead={deleteLead}
         updateLead={updateLead}
       />

@@ -9,6 +9,7 @@ export default function PipelineDashboard(props) {
     ? null
     : parseInt(props.match.params.id);
   const leadsForPipeline = props.filterLeadsForPipeline(leads, pipeline_id);
+
   return (
     <React.Fragment>
       <Header />
@@ -24,6 +25,7 @@ export default function PipelineDashboard(props) {
         <BaseTable
           leads={leadsForPipeline}
           users={props.users}
+          pipelines={props.pipelines}
           searchInput={props.searchInput}
           isAddingNewLead={props.isAddingNewLead}
           submitNewLead={props.submitNewLead}

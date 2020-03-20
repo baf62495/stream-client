@@ -4,9 +4,6 @@ import './BaseTableHead.css';
 export default function BaseTableHead(props) {
   return (
     <div role='row' className='BaseTable__header'>
-      {/* <div role='gridcell' className='BaseTable__header-cell cell-sz-xs'>
-        <input type='checkbox'></input>
-      </div> */}
       <div
         role='gridcell'
         className='BaseTable__header-cell BaseTable__header-cell--sorting cell-sz-med'
@@ -34,18 +31,18 @@ export default function BaseTableHead(props) {
       <div
         role='gridcell'
         className='BaseTable__header-cell BaseTable__header-cell--sortable cell-sz-med'
-        onClick={e => props.onSort(e, 'city')}
-      >
-        City
-        <span className={props.setArrowClass('city')}></span>
-      </div>
-      <div
-        role='gridcell'
-        className='BaseTable__header-cell BaseTable__header-cell--sortable cell-sz-med'
         onClick={e => props.onSort(e, 'state')}
       >
         State
         <span className={props.setArrowClass('state')}></span>
+      </div>
+      <div
+        role='gridcell'
+        className='BaseTable__header-cell BaseTable__header-cell--sortable cell-sz-med'
+        onClick={e => props.onSort(e, 'city')}
+      >
+        City
+        <span className={props.setArrowClass('city')}></span>
       </div>
     </div>
   );

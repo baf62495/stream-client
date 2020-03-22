@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <div className='stream-header'>
-      <Link className='stream-header-logo' to='/pipelines/'>
+      <Link className='stream-header-logo' to='/'>
         <strong>Stream</strong>
       </Link>
     </div>

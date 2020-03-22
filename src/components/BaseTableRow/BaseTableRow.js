@@ -2,6 +2,8 @@ import React from 'react';
 import './BaseTableRow.css';
 import BaseTableRowEditForm from '../BaseTableRowEditForm/BaseTableRowEditForm';
 import DropDownMenu from '../../elements/DropDownMenu/DropDownMenu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 export default class BaseTableRow extends React.Component {
   constructor(props) {
@@ -115,7 +117,12 @@ export default class BaseTableRow extends React.Component {
             {lead.city}
           </div>
           <div className='btn-group'>
-            <button onClick={e => this.toggleDropDownMenu(e)}>More</button>
+            <button
+              className='cell-more-btn'
+              onClick={e => this.toggleDropDownMenu(e)}
+            >
+              <FontAwesomeIcon icon={faEllipsisH} />
+            </button>
             {isDropDownActive ? (
               <DropDownMenu
                 listItems={[editButton, deleteButton, moveButton]}

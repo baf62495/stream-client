@@ -26,7 +26,12 @@ export default function PipelinesHeader(props) {
           All
         </NavLink>
         {pipelineTabs}
-        <button onClick={e => props.history.push('/new-pipeline')}>+</button>
+        <button
+          className='stream-btn stream-btn--primary'
+          onClick={e => props.history.push('/new-pipeline')}
+        >
+          New Pipeline
+        </button>
       </nav>
       <div className='mw38 stream-search-add'>
         <SearchBar

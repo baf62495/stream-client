@@ -9,7 +9,9 @@
 .stream-tabs {
   display: flex;
   flex: 1 1 auto;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  align-items: center;
 }
 
 .stream-tabs > .stream-tabs__tab {

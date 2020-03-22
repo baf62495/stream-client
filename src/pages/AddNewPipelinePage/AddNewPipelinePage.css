@@ -1,0 +1,17 @@
+.new-pipeline--container {
+  margin: auto;
+}
+
+.new-pipeline--form {
+  padding: 40px 0;
+}
+
+.new-pipeline--form label,
+.new-pipeline--form input {
+  display: block;
+  width: 100%;
+}
+
+.new-pipeline--form .stream-btn--primary {
+  margin: 0;
+}

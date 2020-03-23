@@ -8,7 +8,7 @@ export default function LandingPage(props) {
       <Header />
       <div className='landing-page--container'>
         <h1>Handle Leads With Stream</h1>
-        <p>Build data-driven apps with fully managed data services.</p>
+        <p>Streamline your outbound team's leads and interactions.</p>
         <button
           className='stream-btn stream-btn--primary'
           onClick={e => props.history.push('/pipelines')}

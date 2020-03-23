@@ -4,7 +4,7 @@
 
 Stream helps companies and users to enter leads into a database and sort by all types of information to help handle and track leads from a team of outbound callers.
 
-Live App Link: https://mindjournal.now.sh/
+Live App Link: https://stream-one.now.sh/
 
 ![Stream Pipeline Dashboard With Data](/public/screenshots/stream__pipeline-dashboard.png)
 

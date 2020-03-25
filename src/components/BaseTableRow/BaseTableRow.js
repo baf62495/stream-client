@@ -74,25 +74,15 @@ export default class BaseTableRow extends React.Component {
     };
 
     if (!isBeingEdited) {
-      const editButton = (
-        <div onClick={e => this.toggleEditLeadForm(e)}>Edit</div>
-      );
-      const deleteButton = (
-        <div onClick={e => this.handleDelete(e)}>Delete</div>
-      );
+      const editButton = <div onClick={e => this.toggleEditLeadForm(e)}>Edit</div>;
+      const deleteButton = <div onClick={e => this.handleDelete(e)}>Delete</div>;
       const moveButton = (
         <React.Fragment>
           <div onClick={e => this.toggleMoveLead(e)}>Move</div>
           {isBeingMoved ? (
             <DropDownMenu
               listItems={pipelines.map((pipeline, key) => {
-                return (
-                  <div
-                    onClick={e => this.handleChangePipelineId(e, pipeline.id)}
-                  >
-                    {pipeline.title}, {pipeline.id}
-                  </div>
-                );
+                return <div onClick={e => this.handleChangePipelineId(e, pipeline.id)}>{pipeline.title}</div>;
               })}
             />
           ) : null}
@@ -117,28 +107,15 @@ export default class BaseTableRow extends React.Component {
             {lead.city}
           </div>
           <div className='btn-group'>
-            <button
-              className='cell-more-btn'
-              onClick={e => this.toggleDropDownMenu(e)}
-            >
+            <button className='cell-more-btn' onClick={e => this.toggleDropDownMenu(e)}>
               <FontAwesomeIcon icon={faEllipsisH} />
             </button>
-            {isDropDownActive ? (
-              <DropDownMenu
-                listItems={[editButton, deleteButton, moveButton]}
-              />
-            ) : null}
+            {isDropDownActive ? <DropDownMenu listItems={[editButton, deleteButton, moveButton]} /> : null}
           </div>
         </div>
       );
     } else {
-      return (
-        <BaseTableRowEditForm
-          lead={lead}
-          updateLead={this.props.updateLead}
-          toggleEditLeadForm={this.toggleEditLeadForm}
-        />
-      );
+      return <BaseTableRowEditForm lead={lead} updateLead={this.props.updateLead} toggleEditLeadForm={this.toggleEditLeadForm} />;
     }
   }
 }

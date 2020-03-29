@@ -33,7 +33,7 @@ export default function PipelinesHeader(props) {
           New Pipeline
         </button>
       </nav>
-      <div className='mw38 stream-search-add'>
+      <div className='stream-search-add'>
         <SearchBar
           searchInput={props.searchInput}
           updateSearchInput={props.updateSearchInput}

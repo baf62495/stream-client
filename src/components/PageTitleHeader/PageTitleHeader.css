@@ -1,0 +1,10 @@
+.page-header__title {
+  border-bottom: 1px solid #e7ebf3;
+  font-size: 14px;
+  color: #323b49;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f8fb;
+}

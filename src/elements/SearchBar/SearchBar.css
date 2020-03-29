@@ -1,7 +1,7 @@
 .stream-search-add {
+  display: flex;
+  flex: 1 1 auto;
   margin: 5px;
-  min-width: 320px;
-  margin-left: auto;
 }
 
 .stream-search {

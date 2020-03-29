@@ -2,6 +2,8 @@ import React from 'react';
 import Header from '../../components/Header/Header';
 import SubmitButton from '../../elements/SubmitButton/SubmitButton';
 import './AddNewPipelinePage.css';
+import GoBackButton from '../../elements/GoBackButton/GoBackButton';
+import PageTitleHeader from '../../components/PageTitleHeader/PageTitleHeader';
 
 export default function AddNewPipelinePage(props) {
   const handleSubmit = e => {
@@ -20,7 +22,8 @@ export default function AddNewPipelinePage(props) {
   return (
     <React.Fragment>
       <Header />
-      <div className='app-container mw38 new-pipeline--container'>
+      <PageTitleHeader title={'Create New Pipeline'} />
+      <div className='app-container p0-15 mw38 new-pipeline--container'>
         <form
           role='row'
           className='new-pipeline--form'
@@ -37,6 +40,7 @@ export default function AddNewPipelinePage(props) {
           ></input>
           <div className='divider--silver'></div>
           <SubmitButton />
+          <GoBackButton text={'Cancel'} history={props.history} />
         </form>
       </div>
     </React.Fragment>

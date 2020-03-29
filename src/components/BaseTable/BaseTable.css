@@ -3,6 +3,7 @@
   border-radius: 6px;
   font-size: 13px;
   overflow: scroll;
+  display: flex;
 }
 
 .BaseTable input {
@@ -21,4 +22,10 @@
   outline: none;
   border-color: #79589f;
   box-shadow: 0 0 0 2px rgba(157, 112, 208, 0.4);
+}
+
+@media (min-width: 996px) {
+  .BaseTable {
+    flex-direction: column;
+  }
 }

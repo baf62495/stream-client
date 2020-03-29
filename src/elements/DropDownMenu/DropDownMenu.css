@@ -1,7 +1,7 @@
 .drop-down__menu {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 0;
   list-style: none;
   padding: 0;
   text-align: left;
@@ -36,4 +36,11 @@
 .drop-down__menu > li:hover {
   color: #3f3f44;
   background-color: #f7f8fb;
+}
+
+@media (min-width: 996px) {
+  .drop-down__menu {
+    left: auto;
+    right: 0;
+  }
 }

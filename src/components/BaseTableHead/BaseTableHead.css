@@ -1,8 +1,11 @@
 .BaseTable__header {
-  font-weight: 700;
-  text-transform: capitalize;
   background: #fff;
-  height: 40px;
+  font-weight: 700;
+  height: 100%;
+  position: absolute;
+  text-transform: capitalize;
+  width: 84px;
+  z-index: 100;
 }
 
 .BaseTable__header-cell {
@@ -34,4 +37,10 @@
 
 .BaseTable__sort-indicator--ascending:after {
   content: '↑';
+}
+
+@media (min-width: 996px) {
+  .BaseTable__header {
+    height: 40px;
+  }
 }
